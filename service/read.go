@@ -1,5 +1,6 @@
 package service
 
+/*
 import (
 	"context"
 	"encoding/json"
@@ -11,7 +12,7 @@ import (
 )
 
 // Read a page from database
-func (Page) Read(ctx context.Context, req *api.ReadRequest) (*api.ReadResponse, error) {
+func (UrantiaBookService) Read(ctx context.Context, req *api.ReadRequest) (*api.ReadResponse, error) {
 	var resp = api.ReadResponse{Request: req}
 
 	// Set Language code
@@ -39,3 +40,4 @@ func DecodeReadRequest(_ context.Context, r *http.Request) (interface{}, error) 
 	}
 	return request, nil
 }
+*/

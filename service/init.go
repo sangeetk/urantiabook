@@ -19,7 +19,7 @@ func init() {
 	}
 
 	// Index Papers
-	for n, paper := range UB.Papers {
+	for n, paper := range UBPapers {
 		// Index Sections
 		for i, section := range paper.Sections {
 			if i == 0 {

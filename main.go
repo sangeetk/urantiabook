@@ -27,14 +27,11 @@ func main() {
 		}
 	}
 
-	var svc s.Page
-	svc = s.Page{}
+	var ub = s.UrantiaBook{}
 
 	r := mux.NewRouter()
 
-	r.Handle("/list", h.NewServer(s.MakeListEndpoint(svc), s.DecodeListRequest, s.EncodeResponse))
-	r.Handle("/read", h.NewServer(s.MakeReadEndpoint(svc), s.DecodeReadRequest, s.EncodeResponse))
-	r.Handle("/search", h.NewServer(s.MakeSearchEndpoint(svc), s.DecodeSearchRequest, s.EncodeResponse))
+	r.Handle("/index", h.NewServer(s.MakeIndexEndpoint(ub), s.DecodeIndexRequest, s.EncodeResponse))
 
 	http.ListenAndServe(fmt.Sprintf(":%d", port), r)
 

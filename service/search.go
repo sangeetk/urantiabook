@@ -1,5 +1,6 @@
 package service
 
+/*
 import (
 	"context"
 	"encoding/json"
@@ -11,7 +12,7 @@ import (
 )
 
 // Search Pages
-func (Page) Search(ctx context.Context, req *api.SearchRequest) (*api.SearchResults, error) {
+func (UrantiaBookService) Search(ctx context.Context, req *api.SearchRequest) (*api.SearchResults, error) {
 	var results = api.SearchResults{Request: req}
 
 	// Set Language code
@@ -39,3 +40,5 @@ func DecodeSearchRequest(_ context.Context, r *http.Request) (interface{}, error
 	}
 	return request, nil
 }
+
+*/
