@@ -20,11 +20,16 @@ func (ub *UrantiaBook) Index(ctx context.Context, req *api.IndexRequest) (*api.I
 	}
 	resp.Language = req.Language
 
-	var size = req.Size
-	if req.Size == 0 {
+	size := req.Size
+	if req.Size <= 0 || req.Size > len(UBPapers) {
 		size = len(UBPapers)
 	}
-	for i := req.Skip; i < size; i++ {
+	skip := req.Skip
+	if req.Skip <= 0 || req.Skip > len(UBPapers) {
+		skip = 0
+	}
+
+	for i := skip; i < size+skip && i < len(UBPapers); i++ {
 		p := UBPapers[i]
 		paper := api.PaperIndex{ID: p.ID, Title: p.Title, Author: p.Author}
 		for _, s := range p.Sections {
