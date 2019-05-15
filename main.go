@@ -32,6 +32,7 @@ func main() {
 	r := mux.NewRouter()
 
 	r.Handle("/index", h.NewServer(s.MakeIndexEndpoint(ub), s.DecodeIndexRequest, s.EncodeResponse))
+	r.Handle("/parts", h.NewServer(s.MakePartsEndpoint(ub), s.DecodePartsRequest, s.EncodeResponse))
 
 	http.ListenAndServe(fmt.Sprintf(":%d", port), r)
 

@@ -17,6 +17,7 @@ type PartsRequest struct {
 }
 
 type Part struct {
+	ID         string `json:"id"`
 	Title      string `json:"title"`
 	PaperStart int    `json:"pstart"`
 	PaperEnd   int    `json:"pend"`

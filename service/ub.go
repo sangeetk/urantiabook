@@ -1,11 +1,11 @@
 package service
 
 type Part struct {
-	ID      string `json:"id"`
-	Title   string `json:"title"`
-	Start   int    `json:"start"`
-	End     int    `json:"end"`
-	Authors string `json:"authors"`
+	ID         string `json:"id"`
+	Title      string `json:"title"`
+	PaperStart int    `json:"pstart"`
+	PaperEnd   int    `json:"pend"`
+	Authors    string `json:"authors"`
 }
 
 type Paragraph struct {
@@ -28,32 +28,32 @@ type Paper struct {
 
 var UBParts = []Part{
 	{
-		ID:      "1",
-		Title:   "The Central and Superuniverses",
-		Start:   0,
-		End:     31,
-		Authors: "Sponsored by a Uversa Corps of Superuniverse Personalities acting by authority of the Orvonton Ancients of Days",
+		ID:         "1",
+		Title:      "The Central and Superuniverses",
+		PaperStart: 0,
+		PaperEnd:   31,
+		Authors:    "Sponsored by a Uversa Corps of Superuniverse Personalities acting by authority of the Orvonton Ancients of Days",
 	},
 	{
-		ID:      "2",
-		Title:   "The Local Universe",
-		Start:   32,
-		End:     56,
-		Authors: "Sponsored by a Nebadon Corps of Local Universe Personalities acting by authority of Gabriel of Salvington",
+		ID:         "2",
+		Title:      "The Local Universe",
+		PaperStart: 32,
+		PaperEnd:   56,
+		Authors:    "Sponsored by a Nebadon Corps of Local Universe Personalities acting by authority of Gabriel of Salvington",
 	},
 	{
-		ID:      "3",
-		Title:   "The History of Urantia",
-		Start:   57,
-		End:     119,
-		Authors: "These papers were sponsored by a Corps of Local Universe Personalities acting by authority of Gabriel of Salvington",
+		ID:         "3",
+		Title:      "The History of Urantia",
+		PaperStart: 57,
+		PaperEnd:   119,
+		Authors:    "These papers were sponsored by a Corps of Local Universe Personalities acting by authority of Gabriel of Salvington",
 	},
 	{
-		ID:      "4",
-		Title:   "The Life and Teachings of Jesus",
-		Start:   120,
-		End:     196,
-		Authors: "This group of papers was sponsored by a commission of twelve of a Melchizedek revelatory director.</p>",
+		ID:         "4",
+		Title:      "The Life and Teachings of Jesus",
+		PaperStart: 120,
+		PaperEnd:   196,
+		Authors:    "This group of papers was sponsored by a commission of twelve of a Melchizedek revelatory director.</p>",
 	},
 }
 
