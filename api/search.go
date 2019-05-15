@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"time"
 
 	ht "github.com/urantiatech/kit/transport/http"
 )
@@ -31,7 +32,9 @@ type SearchResults struct {
 	Language string         `json:"language"`
 	Request  *SearchRequest `json:"request"`
 	Results  []Result       `json:"papers"`
-	Total    uint64         `json:"total"`
+	Hits     []interface{}  `json:"hits"`
+	Total    uint64         `json:"total_hits"`
+	Took     time.Duration  `json:"took"`
 	Err      string         `json:"err,omitempty"`
 }
 

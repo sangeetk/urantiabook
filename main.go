@@ -35,6 +35,7 @@ func main() {
 	r.Handle("/parts", h.NewServer(s.MakePartsEndpoint(ub), s.DecodePartsRequest, s.EncodeResponse))
 	r.Handle("/paper", h.NewServer(s.MakePaperEndpoint(ub), s.DecodePaperRequest, s.EncodeResponse))
 	r.Handle("/section", h.NewServer(s.MakeSectionEndpoint(ub), s.DecodeSectionRequest, s.EncodeResponse))
+	r.Handle("/search", h.NewServer(s.MakeSearchEndpoint(ub), s.DecodeSearchRequest, s.EncodeResponse))
 
 	http.ListenAndServe(fmt.Sprintf(":%d", port), r)
 
