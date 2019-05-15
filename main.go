@@ -33,6 +33,7 @@ func main() {
 
 	r.Handle("/index", h.NewServer(s.MakeIndexEndpoint(ub), s.DecodeIndexRequest, s.EncodeResponse))
 	r.Handle("/parts", h.NewServer(s.MakePartsEndpoint(ub), s.DecodePartsRequest, s.EncodeResponse))
+	r.Handle("/paper", h.NewServer(s.MakePaperEndpoint(ub), s.DecodePaperRequest, s.EncodeResponse))
 
 	http.ListenAndServe(fmt.Sprintf(":%d", port), r)
 

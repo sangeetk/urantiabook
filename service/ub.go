@@ -1,32 +1,10 @@
 package service
 
-type Part struct {
-	ID         string `json:"id"`
-	Title      string `json:"title"`
-	PaperStart int    `json:"pstart"`
-	PaperEnd   int    `json:"pend"`
-	Authors    string `json:"authors"`
-}
+import (
+	"git.urantiatech.com/urantiabook/urantiabook/api"
+)
 
-type Paragraph struct {
-	ID   string `json:"id"`
-	Text string `json:"text"`
-}
-
-type Section struct {
-	ID    string `json:"id"`
-	Title string `json:"title"`
-	Text  string `json:"text"`
-}
-
-type Paper struct {
-	ID       string    `json:"id"`
-	Title    string    `json:"title"`
-	Sections []Section `json:"sections"`
-	Author   string    `json:"author"`
-}
-
-var UBParts = []Part{
+var UBParts = []api.Part{
 	{
 		ID:         "1",
 		Title:      "The Central and Superuniverses",
@@ -57,11 +35,11 @@ var UBParts = []Part{
 	},
 }
 
-var UBPapers = []Paper{
+var UBPapers = []api.Paper{
 	{
 		ID:    "0",
 		Title: " Foreword",
-		Sections: []Section{
+		Sections: []api.Section{
 			{
 				ID:    "0:0",
 				Title: "",
@@ -98,7 +76,7 @@ var UBPapers = []Paper{
 	{
 		ID:    "1",
 		Title: "The Universal Father ",
-		Sections: []Section{
+		Sections: []api.Section{
 			{
 				ID:    "1:0",
 				Title: "",
@@ -130,7 +108,7 @@ var UBPapers = []Paper{
 	{
 		ID:    "2",
 		Title: "The Nature of God",
-		Sections: []Section{
+		Sections: []api.Section{
 			{
 				ID:    "2:0",
 				Title: "",

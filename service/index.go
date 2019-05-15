@@ -12,7 +12,7 @@ import (
 
 // Index of UB
 func (ub *UrantiaBook) Index(ctx context.Context, req *api.IndexRequest) (*api.IndexResponse, error) {
-	var resp = api.IndexResponse{Request: req}
+	var resp = &api.IndexResponse{Request: req}
 
 	// Set Language code
 	if req.Language == "" {
@@ -39,7 +39,7 @@ func (ub *UrantiaBook) Index(ctx context.Context, req *api.IndexRequest) (*api.I
 	}
 	resp.Total = uint64(len(UBPapers))
 
-	return &resp, nil
+	return resp, nil
 }
 
 // MakeIndexEndpoint -

@@ -12,7 +12,7 @@ import (
 
 // Parts of UB
 func (ub *UrantiaBook) Parts(ctx context.Context, req *api.PartsRequest) (*api.PartsResponse, error) {
-	var resp = api.PartsResponse{Request: req}
+	var resp = &api.PartsResponse{Request: req}
 
 	// Set Language code
 	if req.Language == "" {
@@ -31,7 +31,7 @@ func (ub *UrantiaBook) Parts(ctx context.Context, req *api.PartsRequest) (*api.P
 		resp.Parts = append(resp.Parts, part)
 	}
 
-	return &resp, nil
+	return resp, nil
 }
 
 // MakePartsEndpoint -
