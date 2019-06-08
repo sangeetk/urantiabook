@@ -24,7 +24,7 @@ func init() {
 
 	// Papers
 	for _, paper := range UBPapers {
-		log.Printf("Indexing: [%s] %s - Author:[%s]\n", paper.ID, paper.Title, paper.Author)
+		log.Printf("Indexing: [%s] %s - by [%s]\n", paper.ID, paper.Title, paper.Author)
 		Index.Index(paper.ID, &SearchItem{paper.ID, paper.Title})
 		// Sections
 		for _, section := range paper.Sections {
