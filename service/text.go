@@ -26,7 +26,6 @@ func (ub *UrantiaBook) Text(ctx context.Context, req *api.TextRequest) (*api.Tex
 	ids := strings.Split(req.ID, ":")
 	if len(ids) != 2 {
 		resp.Err = "Invalid Request"
-		log.Println("ids", ids)
 		return resp, nil
 	}
 
