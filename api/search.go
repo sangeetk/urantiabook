@@ -21,17 +21,10 @@ type SearchRequest struct {
 	Skip     int    `json:"skip"`
 }
 
-type Result struct {
-	Slug    string `json:"slug"`
-	Title   string `json:"title"`
-	Excerpt string `json:"excerpt"`
-}
-
 // SearchResults - search results
 type SearchResults struct {
 	Language string         `json:"language"`
 	Request  *SearchRequest `json:"request"`
-	Results  []Result       `json:"papers"`
 	Hits     []interface{}  `json:"hits"`
 	Total    uint64         `json:"total_hits"`
 	Took     time.Duration  `json:"took"`

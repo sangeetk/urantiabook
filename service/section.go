@@ -1,5 +1,7 @@
 package service
 
+/*
+
 import (
 	"context"
 	"encoding/json"
@@ -24,20 +26,20 @@ func (ub *UrantiaBook) Section(ctx context.Context, req *api.SectionRequest) (*a
 
 	ids := strings.Split(req.ID, ":")
 	if len(ids) != 2 {
-		resp.Err = "Invalid Request"
+		resp.Err = "Not Found"
 		return resp, nil
 	}
 
 	paperId, err := strconv.ParseInt(ids[0], 10, 64)
 	if err != nil || paperId < 0 || int(paperId) >= len(UBPapers) {
-		resp.Err = "Invalid Request"
+		resp.Err = "Not Found"
 		return resp, nil
 	}
 	paper := &UBPapers[paperId]
 
 	sectionId, err := strconv.ParseInt(ids[1], 10, 64)
 	if err != nil || sectionId < 0 || int(sectionId) >= len(paper.Sections) {
-		resp.Err = "Invalid Request"
+		resp.Err = "Not Found"
 		return resp, nil
 	}
 
@@ -62,3 +64,4 @@ func DecodeSectionRequest(_ context.Context, r *http.Request) (interface{}, erro
 	}
 	return request, nil
 }
+*/

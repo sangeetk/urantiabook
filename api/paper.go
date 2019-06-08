@@ -14,7 +14,22 @@ import (
 // PaperRequest for the UB paper
 type PaperRequest struct {
 	Language string `json:"language"`
-	ID       string `json:"id"`
+	Paper    int    `json:"paper"`
+}
+
+// Paragraph within a section
+type Paragraph struct {
+	ID   string `json:"id"`
+	Text string `json:"text"`
+	List bool   `json:"list"`
+}
+
+// Section of a UB paper
+type Section struct {
+	ID         string      `json:"id"`
+	Title      string      `json:"title"`
+	Text       string      `json:"text"`
+	Paragraphs []Paragraph `json:"paragraphs"`
 }
 
 // Paper from UB

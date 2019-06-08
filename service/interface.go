@@ -13,8 +13,7 @@ type UrantiaBookInterface interface {
 	Index(context.Context, *api.IndexRequest) (*api.IndexResponse, error)
 	Parts(context.Context, *api.PartsRequest) (*api.PartsResponse, error)
 	Paper(context.Context, *api.PaperRequest) (*api.PaperResponse, error)
-	Section(context.Context, *api.SectionRequest) (*api.SectionResponse, error)
-	Paragraph(context.Context, *api.ParagraphRequest) (*api.ParagraphResponse, error)
+	Text(context.Context, *api.TextRequest) (*api.TextResponse, error)
 	Search(context.Context, *api.SearchRequest) (*api.SearchResults, error)
 }
 

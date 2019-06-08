@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
-	"strconv"
 
 	"git.urantiatech.com/urantiabook/urantiabook/api"
 	"github.com/urantiatech/kit/endpoint"
@@ -21,13 +20,12 @@ func (ub *UrantiaBook) Paper(ctx context.Context, req *api.PaperRequest) (*api.P
 	}
 	resp.Language = req.Language
 
-	id, err := strconv.ParseInt(req.ID, 10, 64)
-	if err != nil || id < 0 || int(id) >= len(UBPapers) {
-		resp.Err = "Invalid Request"
+	if req.Paper < 0 || int(req.Paper) >= len(UBPapers) {
+		resp.Err = "Not Found"
 		return resp, nil
 	}
 
-	resp.Paper = &UBPapers[id]
+	resp.Paper = &UBPapers[req.Paper]
 
 	return resp, nil
 }
