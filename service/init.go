@@ -2,6 +2,7 @@ package service
 
 import (
 	"log"
+	"os"
 
 	"github.com/blevesearch/bleve"
 )
@@ -17,14 +18,32 @@ func init() {
 	var err error
 	// mapping.DefaultMapping = documentMapping
 	mapping := bleve.NewIndexMapping()
-	Index, err = bleve.NewMemOnly(mapping)
+
+	if os.Getenv("STORAGE") == "MEMORY" {
+		Index, err = bleve.NewMemOnly(mapping)
+		createIndex()
+	} else {
+		Index, err = bleve.Open("db/urantiabook.idx")
+		if err != nil {
+			if Index, err = bleve.New("db/urantiabook.idx", mapping); err == nil {
+				createIndex()
+			}
+		} else {
+			if os.Getenv("REINDEX") == "TRUE" || os.Getenv("REINDEX") == "YES" {
+				createIndex()
+			}
+		}
+	}
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// Papers
+}
+
+func createIndex() {
+	// Index Papers
 	for _, paper := range UBPapers {
-		log.Printf("Indexing: [%s] %s - by [%s]\n", paper.ID, paper.Title, paper.Author)
+		log.Printf("Indexing: [%s] %s - [by %s]\n", paper.ID, paper.Title, paper.Author)
 		Index.Index(paper.ID, &SearchItem{paper.ID, paper.Title})
 		// Sections
 		for _, section := range paper.Sections {
@@ -39,5 +58,4 @@ func init() {
 			}
 		}
 	}
-
 }
