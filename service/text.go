@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"git.urantiatech.com/urantiabook/urantiabook/api"
-	"github.com/urantiatech/kit/endpoint"
+	"github.com/go-kit/kit/endpoint"
 	"golang.org/x/text/language"
 )
 

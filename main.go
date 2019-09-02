@@ -9,8 +9,8 @@ import (
 	"strconv"
 
 	s "git.urantiatech.com/urantiabook/urantiabook/service"
+	h "github.com/go-kit/kit/transport/http"
 	"github.com/gorilla/mux"
-	h "github.com/urantiatech/kit/transport/http"
 )
 
 func main() {
