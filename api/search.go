@@ -26,7 +26,7 @@ type SearchResults struct {
 	Language string         `json:"language"`
 	Request  *SearchRequest `json:"request"`
 	Hits     []interface{}  `json:"hits"`
-	Total    uint64         `json:"total_hits"`
+	Total    uint64         `json:"total"`
 	Took     time.Duration  `json:"took"`
 	Err      string         `json:"err,omitempty"`
 }
