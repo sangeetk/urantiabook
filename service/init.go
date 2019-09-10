@@ -38,6 +38,17 @@ func init() {
 		log.Fatal(err)
 	}
 
+	// Insert values into section.Text
+	for id, paper := range UBPapers {
+		for i, section := range paper.Sections {
+			var sectiontext string
+			for _, para := range section.Paragraphs {
+				sectiontext += para.Text
+			}
+			UBPapers[id].Sections[i].Text = sectiontext
+		}
+	}
+
 }
 
 func createIndex() {

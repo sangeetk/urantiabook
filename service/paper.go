@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"encoding/json"
+	"log"
 	"net/http"
 	"strings"
 
@@ -26,23 +27,34 @@ func (ub *UrantiaBook) Paper(ctx context.Context, req *api.PaperRequest) (*api.P
 		return resp, nil
 	}
 
-	paper := &UBPapers[req.Paper]
-
-	for i, section := range paper.Sections {
-		var sectiontext string
-		for j, para := range section.Paragraphs {
-			if req.Plaintext {
-				// clean all <em> tags
-				para.Text = strings.ReplaceAll(para.Text, "<em>", "")
-				para.Text = strings.ReplaceAll(para.Text, "</em>", "")
-				paper.Sections[i].Paragraphs[j].Text = para.Text
-			}
-			sectiontext += para.Text
-		}
-		paper.Sections[i].Text = sectiontext
+	if !req.Plaintext {
+		resp.Paper = &UBPapers[req.Paper]
+		return resp, nil
 	}
 
-	resp.Paper = paper
+	// Create a copy of Paper and clean HTML tags
+	var paper api.Paper
+	paper.ID = UBPapers[req.Paper].ID
+	paper.Title = UBPapers[req.Paper].Title
+	paper.Author = UBPapers[req.Paper].Author
+
+	for _, sec := range UBPapers[req.Paper].Sections {
+		var section = api.Section{ID: sec.ID, Title: sec.Title, Text: sec.Text}
+
+		for _, para := range sec.Paragraphs {
+			var paragraph = api.Paragraph{ID: para.ID, Text: para.Text, List: para.List}
+
+			// clean all <em> tags
+			paragraph.Text = strings.ReplaceAll(paragraph.Text, "<em>", "")
+			paragraph.Text = strings.ReplaceAll(paragraph.Text, "</em>", "")
+			section.Paragraphs = append(section.Paragraphs, paragraph)
+		}
+		section.Text = strings.ReplaceAll(section.Text, "<em>", "")
+		section.Text = strings.ReplaceAll(section.Text, "</em>", "")
+		paper.Sections = append(paper.Sections, section)
+	}
+
+	resp.Paper = &paper
 
 	return resp, nil
 }
