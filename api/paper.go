@@ -13,8 +13,9 @@ import (
 
 // PaperRequest for the UB paper
 type PaperRequest struct {
-	Language string `json:"language"`
-	Paper    int    `json:"paper"`
+	Language  string `json:"language"`
+	Paper     int    `json:"paper"`
+	Plaintext bool   `json:"plaintext"`
 }
 
 // Paragraph within a section

@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
+	"strings"
 
 	"git.urantiatech.com/urantiabook/urantiabook/api"
 	"github.com/go-kit/kit/endpoint"
@@ -25,7 +26,23 @@ func (ub *UrantiaBook) Paper(ctx context.Context, req *api.PaperRequest) (*api.P
 		return resp, nil
 	}
 
-	resp.Paper = &UBPapers[req.Paper]
+	paper := &UBPapers[req.Paper]
+
+	for i, section := range paper.Sections {
+		var sectiontext string
+		for j, para := range section.Paragraphs {
+			if req.Plaintext {
+				// clean all <em> tags
+				para.Text = strings.ReplaceAll(para.Text, "<em>", "")
+				para.Text = strings.ReplaceAll(para.Text, "</em>", "")
+				paper.Sections[i].Paragraphs[j].Text = para.Text
+			}
+			sectiontext += para.Text
+		}
+		paper.Sections[i].Text = sectiontext
+	}
+
+	resp.Paper = paper
 
 	return resp, nil
 }
